@@ -1,3 +1,14 @@
+var html = document.createElement('div');
+html.innerText = "Hello!";
+html.style.position = "absolute";
+html.style.height = "200px";
+html.style.zindex = "2";
+html.style.width = "200px";
+html.style.display = "none";
+html.style.border = "solid thin";
+html.style.background = "white";
+html.id = "popup";
+document.body.appendChild(html);
 
 function getSelectedText() {
 	var text = "";
@@ -12,9 +23,21 @@ function getSelectedText() {
 function grabText() {
 	var selectedText = getSelectedText();
 	if (selectedText) {
-    		alert("Got selected text " + selectedText);
+		s = window.getSelection();
+		range = s.getRangeAt(0);
+		rect = range.getBoundingClientRect();
+		console.log(rect.top, rect.bottom, rect.left, rect.right);
+		popup = document.getElementById("popup");
+		var newTop = rect.bottom + scrollY;
+		popup.style.top = newTop.toString() + "px";
+		var newLeft = rect.left + scrollX;
+		popup.style.left = newLeft.toString() + "px";
+		popup.style.display = '';
 	}
 }
 
+document.onmousedown = function() { document.getElementById("popup").style.display = "none" };
 document.onmouseup = grabText;
 document.onkeyup = grabText;
+
+
