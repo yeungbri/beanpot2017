@@ -1,3 +1,1 @@
 // Content.js
-
-alert("Hello!")
