@@ -37,6 +37,14 @@ function grabText() {
 }
 
 document.onmousedown = function() { document.getElementById("popup").style.display = "none" };
+
+function parseText(text) {
+	text = text.replace(/(\S)pm/i, "$1 pm");
+	text = text.replace(/(\S)pm/i, "$1 pm");
+	text = text.replace(/rd/i, "").replace(/th/i, "");
+	alert(moment(text).isValid());	
+}
+
 document.onmouseup = grabText;
 document.onkeyup = grabText;
 

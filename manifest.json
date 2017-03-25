@@ -3,8 +3,7 @@
   "name": "dateselect",
   "version": "0.1",
   "content_scripts": [{
-    "web_accessible_resources": ["template.html", "/template.html", "test.html"],
     "matches": ["<all_urls>"],
-    "js": ["jquery3.1.1.min.js", "content.js"]
+    "js": ["jquery3.1.1.min.js", "content.js", "moment.js"]
   }]
 }
