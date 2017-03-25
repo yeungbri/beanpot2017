@@ -1,4 +1,3 @@
-
 function getSelectedText() {
 	var text = "";
 	if (typeof window.getSelection != "undefined") {
@@ -12,8 +11,15 @@ function getSelectedText() {
 function grabText() {
 	var selectedText = getSelectedText();
 	if (selectedText) {
-    		alert("Got selected text " + selectedText);
+    		parseText(selectedText);
 	}
+}
+
+function parseText(text) {
+	text = text.replace(/(\S)pm/i, "$1 pm");
+	text = text.replace(/(\S)pm/i, "$1 pm");
+	text = text.replace(/rd/i, "").replace(/th/i, "");
+	alert(moment(text).isValid());	
 }
 
 document.onmouseup = grabText;
